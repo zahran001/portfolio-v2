@@ -4,11 +4,20 @@
       "Bash(npm run dev)",
       "Bash(npm run build)",
       "Bash(npm run lint)",
+      "Bash(npm install:*)",
+      "Bash(npm ci)",
+      "Bash(npx serve out)",
       "Bash(git status)",
       "Bash(git diff:*)",
       "Bash(git add:*)",
       "Bash(git log:*)",
-      "Bash(npx serve out)"
+      "Bash(git commit:*)",
+      "Bash(mkdir:*)",
+      "Bash(cp:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(git:*)"
     ]
   }
 }
+

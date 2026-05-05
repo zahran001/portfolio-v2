@@ -256,3 +256,28 @@ Test the build output (`out/`) with `npx serve out` — not `npm run dev` — to
 - **Do not paraphrase content.** When porting or editing prose from project pages, experience entries, or reflections — copy verbatim.
 - **Do not hardcode project cards in `page.tsx` or `projects/page.tsx`.** All card data comes from `src/data/projects.ts`. Adding a card anywhere else breaks the single source of truth.
 - **Do not construct Tailwind class names dynamically** (e.g., `` `bg-${color}-500` ``). Tailwind's tree-shaker won't detect them and the styles won't appear. Use a static map instead (see `TagPill.tsx`).
+
+
+## Git Discipline (for remote agents & team work)
+
+- **Each phase = one commit** with a descriptive message in the format `"Phase X: [description]"` (e.g. `"Phase 1: Foundation and components"`)
+- **For Phase 4** (11 project pages), commit every 3 pages: `"Phase 4a: Projects 1-3 (bitfilter, envdrift, ecommerce)"`, `"Phase 4b: Projects 4-6"`, etc.
+- **Never amend commits** — always create new ones if you need to fix something. Amended history is hard to review and can break CI/CD.
+- **Only push to `main` after a phase completes successfully** — verify the build passes before pushing.
+- **If a phase fails mid-way**: commit the working state with `"Phase X: WIP - [description of what worked]"`, push it, and report the error with full context.
+- **No force-push.** If you need to undo changes, use `git revert` or create a new corrective commit — never rewrite history.
+- **Commit message format**:
+  - One-line title (70 chars max), starting with `Phase X:`
+  - Blank line
+  - 2–3 lines describing what was built/changed
+  - Example:
+    ```
+    Phase 2: Index page with featured projects
+    
+    - Ported hero header with profile photo (rotation fix applied)
+    - Built Spotlight component for about section
+    - Wired featured project cards from data layer
+    - Verified SVG diagrams display fully without cropping
+    ```
+
+This ensures clear phase-by-phase progress, easy rollback if needed, and a readable history for future reference.
