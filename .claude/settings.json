@@ -16,7 +16,8 @@
       "Bash(cp:*)",
       "Bash(npm:*)",
       "Bash(npx:*)",
-      "Bash(git:*)"
+      "Bash(git:*)",
+      "Read(../zahran001.github.io/**)"
     ]
   }
 }
