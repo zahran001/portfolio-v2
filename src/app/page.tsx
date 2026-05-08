@@ -1,65 +1,109 @@
-import Image from "next/image";
+import Image from 'next/image'
+import Link from 'next/link'
+import ProjectCard from '@/components/ProjectCard'
+import { projects } from '@/data/projects'
+
+const featuredProjects = projects.filter((p) => p.category === 'featured')
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
+    <>
+      {/* Hero Header */}
+      <header className="text-center py-16 px-6">
+        <div className="flex flex-col items-center">
+          <Image
+            src="/images/profile.png"
+            alt="Zahran Yahia Khan"
+            width={240}
+            height={240}
+            className="rounded-full object-cover rotate-90 mb-4"
+            priority
+            unoptimized
+          />
+          <h1 className="text-4xl font-bold text-white mt-2 mb-2">Zahran Yahia Khan</h1>
+          <p className="text-xl text-white/90 mb-1">Software Engineer | Backend, Cloud &amp; AI</p>
+          <p className="text-base text-white/70 mb-6">University of South Florida &bull; Computer Science, B.S.</p>
+          <div className="flex flex-wrap justify-center gap-3">
             <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="https://github.com/zahran001"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded border-2 border-white/70 px-5 py-2 text-sm font-semibold text-white hover:border-white hover:bg-white/10 transition-colors"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
+              GitHub
+            </a>
             <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              href="https://www.linkedin.com/in/zahran-yahia/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded border-2 border-white/70 px-5 py-2 text-sm font-semibold text-white hover:border-white hover:bg-white/10 transition-colors"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+              LinkedIn
+            </a>
+            <a
+              href="https://drive.google.com/file/d/1d_HQYQmHnq7EEbJOmQmGY2gI3y9lmKJG/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded border-2 border-white/70 px-5 py-2 text-sm font-semibold text-white hover:border-white hover:bg-white/10 transition-colors"
+            >
+              Resume
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+      </header>
+
+      <div className="max-w-5xl mx-auto px-6 w-full pb-16">
+        {/* About Section */}
+        <section id="aboutme" className="mb-16">
+          <div className="bg-white/90 rounded-2xl shadow-lg p-8 flex flex-col md:flex-row items-center gap-8">
+            <div className="flex-1">
+              <h2 className="text-2xl font-bold text-content-heading mb-4">About</h2>
+              <p className="text-content-text mb-4 leading-relaxed">
+                I&apos;m a CS senior at the University of South Florida. I build distributed systems and cloud infrastructure, focusing on Kubernetes, microservices, and high-throughput backends. Recently, I&apos;ve been designing agentic systems and orchestrating multi-agent workflows in production.
+              </p>
+              <p className="text-content-text mb-6 leading-relaxed">
+                I&apos;m currently exploring compiler optimizations (SIMD, memory-bound performance), high-performance computing, and AI/ML systems, including training, fine-tuning, and post-training.
+              </p>
+              <Link
+                href="/about/"
+                className="inline-block rounded border-2 border-accent-purple px-5 py-2 text-sm font-bold text-accent-purple hover:bg-accent-purple hover:text-white transition-colors"
+              >
+                Education &amp; Experience
+              </Link>
+            </div>
+            <div className="flex-shrink-0">
+              <Image
+                src="/images/zyk_image.png"
+                alt="Zahran Yahia Khan"
+                width={200}
+                height={200}
+                className="rounded-xl object-cover"
+                unoptimized
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section id="projects">
+          <h2 className="text-2xl font-bold text-white mb-6 text-center">
+            <strong>Projects</strong>
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            {featuredProjects.map((project) => (
+              <ProjectCard key={project.slug} project={project} />
+            ))}
+          </div>
+          <div className="text-center">
+            <Link
+              href="/projects/"
+              className="inline-block rounded border-2 border-white/70 px-6 py-2 text-sm font-semibold text-white hover:border-white hover:bg-white/10 transition-colors"
+            >
+              Show all
+            </Link>
+          </div>
+        </section>
+      </div>
+    </>
+  )
 }
